@@ -81,12 +81,12 @@ class FlipView extends Component {
       <View {...this.props}>
         <Animated.View
           pointerEvents={this.state.isFlipped ? 'none' : 'auto'}
-          style={[styles.flippableView, {transform: [{perspective: this.props.perspective}, {[rotateProperty]: this.state.frontRotation}]}]}>
+          style={[styles.flippableView, {transform: [{perspective: this.props.perspective}, {[rotateProperty]: this.state.frontRotation}]}, this.state.isFlipped ? {zIndex: 0} : {zIndex: 1}]}>
           {this.props.front}
         </Animated.View>
         <Animated.View
           pointerEvents={this.state.isFlipped ? 'auto' : 'none'}
-          style={[styles.flippableView, {transform: [{perspective: this.props.perspective}, {[rotateProperty]: this.state.backRotation}]}]}>
+          style={[styles.flippableView, {transform: [{perspective: this.props.perspective}, {[rotateProperty]: this.state.backRotation}]}, this.state.isFlipped ? {zIndex: 1} : {zIndex: 0}]}>
           {this.props.back}
         </Animated.View>
       </View>
